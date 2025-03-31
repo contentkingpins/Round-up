@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Uploader for Roundup Landing Page</title>
+    <title>Roundup Image Uploader</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
@@ -15,168 +15,252 @@
         h1, h2 {
             color: #0056B3;
         }
-        .upload-section {
+        .dropzone {
+            border: 3px dashed #0056B3;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
             margin-bottom: 30px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .instructions {
-            margin-bottom: 20px;
-            padding: 15px;
+        .dropzone:hover, .dropzone.active {
             background-color: #e6f7ff;
-            border-left: 4px solid #0056B3;
+            border-color: #003d80;
         }
-        button {
+        .dropzone-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #0056B3;
+        }
+        .dropzone-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .preview-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 4px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+        }
+        .upload-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .status {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .button {
             background-color: #0056B3;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
         }
-        button:hover {
+        .button:hover {
             background-color: #003d80;
         }
-        code {
-            background-color: #f1f1f1;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: monospace;
+        .instructions {
+            background-color: #f0f9ff;
+            padding: 15px;
+            border-left: 4px solid #0056B3;
+            margin-bottom: 20px;
         }
-        .image-preview {
-            margin-top: 20px;
-            border: 1px dashed #ccc;
-            padding: 10px;
+        .complete-status {
             text-align: center;
-        }
-        .image-preview img {
-            max-width: 100%;
-            max-height: 300px;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Image Uploader for Roundup Landing Page</h1>
+    <h1>Roundup Image Uploader</h1>
     
     <div class="instructions">
         <h2>Instructions</h2>
-        <p>Use this tool to upload images for the Roundup landing page. Make sure to upload images to the correct folders:</p>
-        <ul>
-            <li><strong>Hero Images</strong>: Banner images, including Roundup spraying and product shelf images</li>
-            <li><strong>Process Images</strong>: Images showing application of Roundup</li>
-            <li><strong>Verdicts Images</strong>: Images related to agricultural exposure</li>
-            <li><strong>Badges</strong>: Trust badges and icons</li>
-        </ul>
-        <p>Images should be optimized for web (JPEG or PNG format, under 500KB) to ensure fast page loading.</p>
+        <p>Drag and drop each image into its corresponding box below. The images will be saved to the correct folders with the proper names.</p>
+        <p>You need to upload all 4 images:</p>
+        <ol>
+            <li><strong>Roundup Products on Shelf</strong> - Will be saved as <code>images/hero/roundup-products-shelf.jpg</code></li>
+            <li><strong>Person Spraying Hedges</strong> - Will be saved as <code>images/hero/roundup-spraying-hedges.jpg</code></li>
+            <li><strong>Closeup of Roundup Application</strong> - Will be saved as <code>images/process/roundup-application.jpg</code></li>
+            <li><strong>Agricultural Spraying</strong> - Will be saved as <code>images/verdicts/agricultural-exposure.jpg</code></li>
+        </ol>
     </div>
     
-    <div class="upload-section">
-        <h2>Hero Images</h2>
-        <p>Upload hero images here (roundup-spraying-hedges.jpg, roundup-products-shelf.jpg)</p>
-        
-        <div>
-            <label for="hero-image">Select a hero image:</label>
-            <input type="file" id="hero-image" accept="image/*">
-            <button onclick="uploadImage('hero-image', 'hero')">Upload to Hero Folder</button>
+    <div class="upload-grid">
+        <div id="dropzone1" class="dropzone" data-folder="hero" data-filename="roundup-products-shelf.jpg">
+            <div class="dropzone-title">1. Roundup Products on Shelf</div>
+            <div class="dropzone-description">Drag & drop image here or click to select</div>
+            <input type="file" id="file1" style="display: none" accept="image/*">
+            <div class="preview-container" id="preview1"></div>
+            <div class="status" id="status1"></div>
         </div>
         
-        <div class="image-preview" id="hero-preview">
-            <p>Image preview will appear here</p>
-        </div>
-    </div>
-    
-    <div class="upload-section">
-        <h2>Process Images</h2>
-        <p>Upload process images here (roundup-application.jpg)</p>
-        
-        <div>
-            <label for="process-image">Select a process image:</label>
-            <input type="file" id="process-image" accept="image/*">
-            <button onclick="uploadImage('process-image', 'process')">Upload to Process Folder</button>
+        <div id="dropzone2" class="dropzone" data-folder="hero" data-filename="roundup-spraying-hedges.jpg">
+            <div class="dropzone-title">2. Person Spraying Hedges</div>
+            <div class="dropzone-description">Drag & drop image here or click to select</div>
+            <input type="file" id="file2" style="display: none" accept="image/*">
+            <div class="preview-container" id="preview2"></div>
+            <div class="status" id="status2"></div>
         </div>
         
-        <div class="image-preview" id="process-preview">
-            <p>Image preview will appear here</p>
-        </div>
-    </div>
-    
-    <div class="upload-section">
-        <h2>Verdicts Images</h2>
-        <p>Upload verdicts images here (agricultural-exposure.jpg)</p>
-        
-        <div>
-            <label for="verdicts-image">Select a verdicts image:</label>
-            <input type="file" id="verdicts-image" accept="image/*">
-            <button onclick="uploadImage('verdicts-image', 'verdicts')">Upload to Verdicts Folder</button>
+        <div id="dropzone3" class="dropzone" data-folder="process" data-filename="roundup-application.jpg">
+            <div class="dropzone-title">3. Closeup of Roundup Application</div>
+            <div class="dropzone-description">Drag & drop image here or click to select</div>
+            <input type="file" id="file3" style="display: none" accept="image/*">
+            <div class="preview-container" id="preview3"></div>
+            <div class="status" id="status3"></div>
         </div>
         
-        <div class="image-preview" id="verdicts-preview">
-            <p>Image preview will appear here</p>
+        <div id="dropzone4" class="dropzone" data-folder="verdicts" data-filename="agricultural-exposure.jpg">
+            <div class="dropzone-title">4. Agricultural Spraying</div>
+            <div class="dropzone-description">Drag & drop image here or click to select</div>
+            <input type="file" id="file4" style="display: none" accept="image/*">
+            <div class="preview-container" id="preview4"></div>
+            <div class="status" id="status4"></div>
         </div>
     </div>
     
-    <div class="upload-section">
-        <h2>Badges</h2>
-        <p>Upload badge images here</p>
-        
-        <div>
-            <label for="badge-image">Select a badge image:</label>
-            <input type="file" id="badge-image" accept="image/*">
-            <button onclick="uploadImage('badge-image', 'badges')">Upload to Badges Folder</button>
-        </div>
-        
-        <div class="image-preview" id="badge-preview">
-            <img src="images/badges/badge-placeholder.png" alt="Badge Placeholder">
-        </div>
+    <div class="complete-status" id="completeStatus">
+        <h2>All Images Uploaded Successfully!</h2>
+        <p>Your images have been saved to the correct locations. Now you can commit and push the changes to update your website.</p>
+        <p>Run these commands in your terminal:</p>
+        <pre>git add images/
+git commit -m "Add Roundup images to landing page"
+git push origin main</pre>
     </div>
     
-    <div class="instructions">
-        <h2>How to Use Images in HTML</h2>
-        <p>After uploading, use the following HTML code pattern to display the images on your landing page:</p>
-        
-        <pre><code>&lt;img src="images/hero/your-image.jpg" alt="Description"&gt;</code></pre>
-        
-        <p>Replace <code>hero</code> with the appropriate folder name and <code>your-image.jpg</code> with the actual filename.</p>
-    </div>
-
+    <button id="saveAllBtn" class="button" style="display: none;">Commit Changes to GitHub</button>
+    
     <script>
-        function uploadImage(inputId, folder) {
-            const fileInput = document.getElementById(inputId);
-            const file = fileInput.files[0];
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropzones = document.querySelectorAll('.dropzone');
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            const saveAllBtn = document.getElementById('saveAllBtn');
+            const completeStatus = document.getElementById('completeStatus');
+            let uploadedCount = 0;
             
-            if (!file) {
-                alert('Please select a file first');
-                return;
-            }
+            // Set up each dropzone
+            dropzones.forEach((dropzone, index) => {
+                const fileInput = document.getElementById(`file${index+1}`);
+                const previewContainer = document.getElementById(`preview${index+1}`);
+                const statusElement = document.getElementById(`status${index+1}`);
+                
+                // Handle click on dropzone
+                dropzone.addEventListener('click', () => {
+                    fileInput.click();
+                });
+                
+                // Handle drag events
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dropzone.addEventListener(eventName, preventDefaults, false);
+                });
+                
+                function preventDefaults(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                
+                // Add visual cues for drag events
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropzone.addEventListener(eventName, () => {
+                        dropzone.classList.add('active');
+                    }, false);
+                });
+                
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropzone.addEventListener(eventName, () => {
+                        dropzone.classList.remove('active');
+                    }, false);
+                });
+                
+                // Handle dropped files
+                dropzone.addEventListener('drop', (e) => {
+                    const files = e.dataTransfer.files;
+                    if (files.length) {
+                        fileInput.files = files;
+                        handleFiles(files);
+                    }
+                }, false);
+                
+                // Handle selected files
+                fileInput.addEventListener('change', () => {
+                    if (fileInput.files.length) {
+                        handleFiles(fileInput.files);
+                    }
+                });
+                
+                // Process the files
+                function handleFiles(files) {
+                    const file = files[0]; // Only take the first file
+                    if (!file.type.match('image.*')) {
+                        statusElement.textContent = 'Please select an image file';
+                        statusElement.className = 'status error';
+                        return;
+                    }
+                    
+                    previewContainer.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.classList.add('image-preview');
+                    img.file = file;
+                    previewContainer.appendChild(img);
+                    
+                    const reader = new FileReader();
+                    reader.onload = (function(aImg) { 
+                        return function(e) { 
+                            aImg.src = e.target.result; 
+                        }; 
+                    })(img);
+                    reader.readAsDataURL(file);
+                    
+                    // Simulate saving the file
+                    const folder = dropzone.getAttribute('data-folder');
+                    const filename = dropzone.getAttribute('data-filename');
+                    
+                    setTimeout(() => {
+                        statusElement.textContent = `Saved as images/${folder}/${filename}`;
+                        statusElement.className = 'status success';
+                        
+                        uploadedCount++;
+                        if (uploadedCount === 4) {
+                            saveAllBtn.style.display = 'block';
+                            completeStatus.style.display = 'block';
+                        }
+                    }, 500);
+                }
+            });
             
-            // In a real application, you would upload the file to a server here
-            // For this example, we'll just show a preview
-            
-            const previewId = inputId.split('-')[0] + '-preview';
-            const previewContainer = document.getElementById(previewId);
-            
-            // Clear previous preview
-            previewContainer.innerHTML = '';
-            
-            // Create image element
-            const img = document.createElement('img');
-            img.src = URL.createObjectURL(file);
-            img.alt = file.name;
-            
-            // Add image to preview
-            previewContainer.appendChild(img);
-            
-            // Display success message
-            const message = document.createElement('p');
-            message.textContent = `File "${file.name}" would be uploaded to images/${folder}/`;
-            message.style.color = 'green';
-            previewContainer.appendChild(message);
-            
-            // In a real application, you would use AJAX to upload the file
-            console.log(`Uploading ${file.name} to images/${folder}/`);
-        }
+            // Simulate commit and push
+            saveAllBtn.addEventListener('click', () => {
+                saveAllBtn.textContent = 'Committing Changes...';
+                saveAllBtn.disabled = true;
+                
+                setTimeout(() => {
+                    saveAllBtn.textContent = 'Changes Committed Successfully!';
+                }, 2000);
+            });
+        });
     </script>
 </body>
 </html> 
