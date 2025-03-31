@@ -2,12 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io;">
     <title>Roundup Lawsuit | Free Case Evaluation | Cancer Claims</title>
     <meta name="description" content="Have you been diagnosed with cancer after using Roundup? You may be entitled to significant compensation. Free consultation with experienced Roundup attorneys.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org markup for Law Firm -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Legal Justice Attorneys",
+      "description": "We represent victims who have been diagnosed with non-Hodgkin's lymphoma and other cancers after exposure to Roundup weed killer.",
+      "url": "https://example.com",
+      "telephone": "+18001234567",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Legal Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Roundup Cancer Lawsuit Representation"
+            }
+          }
+        ]
+      },
+      "areaServed": "United States",
+      "priceRange": "Contingency Fee",
+      "paymentAccepted": "No Fee Unless We Win"
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I qualify for a Roundup lawsuit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You may qualify if you were a regular user of Roundup and have been diagnosed with non-Hodgkin's lymphoma, leukemia, or another form of cancer linked to Roundup exposure. Even if your loved one has passed away from their cancer, you may still be able to file a claim on their behalf."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much compensation can I receive from a Roundup lawsuit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recent verdicts have ranged from millions to billions of dollars. In 2023, a $175 million verdict was awarded in a Philadelphia trial. Settlements and compensation amounts vary based on exposure details, medical diagnosis, and other factors specific to your case."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Add meta tag for faster page rendering -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <!-- Add preload for critical assets -->
+    <link rel="preload" href="images/hero/roundup-spraying-hedges.jpg" as="image" type="image/jpeg">
+    
     <style>
         /* Reset and Base Styles */
         * {
@@ -57,6 +119,8 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
+            loading: lazy;
         }
         
         .container {
@@ -141,10 +205,24 @@
         
         /* Hero Section Styles */
         .hero {
-            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.9)), url('images/hero/roundup-spraying-hedges.jpg') no-repeat center center;
-            background-size: cover;
+            background-color: rgba(0, 86, 179, 0.9);
+            position: relative;
             color: #FFFFFF;
             padding: 80px 0;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/hero/roundup-spraying-hedges.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
         }
         
         .hero-content {
@@ -1120,13 +1198,15 @@
         <a href="#qualify-form" class="sticky-form">Free Case Review</a>
     </div>
 
-    <script>
+    <script async>
         // Simple scroll to form functionality
-        document.querySelectorAll('a[href="#qualify-form"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector('#qualify-form').scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href="#qualify-form"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector('#qualify-form').scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
         });
