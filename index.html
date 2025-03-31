@@ -579,22 +579,37 @@
         .footer-disclaimer {
             flex: 0 0 50%;
             font-size: 12px;
+            line-height: 1.6;
+        }
+        
+        .footer-disclaimer p {
+            margin-bottom: 15px;
         }
         
         .fee-guarantee {
             color: #FFFFFF;
             font-weight: 600;
-            margin-top: 15px;
         }
         
         .footer-badges {
             flex: 0 0 20%;
             display: flex;
             justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
         }
         
-        .footer-badges .badge {
-            margin-left: 10px;
+        .footer-badge {
+            width: 60px;
+            height: 60px;
+            background-color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #333;
+            font-size: 12px;
         }
         
         .copyright {
@@ -973,7 +988,6 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="footer-logo">Legal Justice Attorneys</div>
-                    <p>123 Main Street, Suite 500<br>Anytown, USA 12345</p>
                 </div>
                 
                 <div class="footer-disclaimer">
@@ -983,9 +997,9 @@
                 </div>
                 
                 <div class="footer-badges">
-                    <div class="badge">BBB A+</div>
-                    <div class="badge">AV Rated</div>
-                    <div class="badge">Super Lawyers</div>
+                    <div class="footer-badge">BBB A+</div>
+                    <div class="footer-badge">AV Rated</div>
+                    <div class="footer-badge">Super Lawyers</div>
                 </div>
             </div>
             
