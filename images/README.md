@@ -1,52 +1,62 @@
-# Images Directory for Roundup Lawsuit Landing Page
+# Roundup Landing Page Images
 
-This directory contains all the images used in the Roundup lawsuit landing page. Below is the organization structure and guidelines for adding or updating images.
+This directory contains all the images used in the Roundup lawsuit landing page.
 
 ## Directory Structure
 
-- `/images` - Main images directory
-  - `/badges` - Trust badges and certification logos (BBB, AV Rated, Super Lawyers)
-  - `/hero` - Hero section background images and header visuals
-  - `/icons` - SVG and other icon assets used throughout the site
+- **hero/** - Hero section images
+  - `roundup-spraying-hedges.jpg` - Background image showing someone spraying Roundup on hedges
+  - `roundup-products-shelf.jpg` - Image of Roundup products on store shelves
+  
+- **process/** - Process section images
+  - `roundup-application.jpg` - Image showing someone applying Roundup herbicide
+  
+- **verdicts/** - Verdicts section images
+  - `agricultural-exposure.jpg` - Image showing agricultural spraying of Roundup
+  
+- **badges/** - Trust badges and certifications
+  
+- **icons/** - Icons used throughout the site
 
-## Image Guidelines
+## Image Requirements
 
-### File Formats
-- Use **WebP** format when possible for best performance (with JPG/PNG fallbacks for older browsers)
-- Use **SVG** for icons and simple graphics
-- Use **PNG** for images requiring transparency
-- Use **JPG** for photographs and complex images without transparency needs
+1. **Format**: Use optimized JPEG or PNG images
+2. **Size**: Keep file sizes under 500KB for optimal performance
+3. **Dimensions**:
+   - Hero images: 1600px × 800px (2:1 ratio)
+   - Content images: 800px × 600px (4:3 ratio)
+   - Badges: 120px × 120px
 
-### Sizing Guidelines
-- Hero images: 1500px × 1000px (16:9 aspect ratio)
-- Badge icons: 120px × 120px (1:1 aspect ratio)
-- Trust badges/logos: 80px × 80px (1:1 aspect ratio)
-- General icons: 64px × 64px (1:1 aspect ratio)
+## Usage in HTML
 
-### Naming Convention
-Use descriptive, kebab-case names that indicate the purpose of the image:
-- `hero-roundup-bottle.webp`
-- `badge-bbb-aplus.svg`
-- `icon-checkmark-green.svg`
+To use these images in the HTML, use the following format:
 
-## Replacing Images
+```html
+<img src="images/[directory]/[filename].[extension]" alt="Descriptive alt text">
+```
 
-To replace an image in the landing page:
+Example:
+```html
+<img src="images/hero/roundup-spraying-hedges.jpg" alt="Person applying Roundup to hedges">
+```
 
-1. Add the new image to the appropriate subdirectory
-2. Update the reference in `index.html` to point to the new image
-3. Make sure to maintain the same dimensions or aspect ratio
+## Usage in CSS
 
-## Current Images Used
+For background images in CSS, use:
 
-### Hero Section
-- Background image: Currently using a remote URL, can be replaced with a local image
-- Recommended replacement: `images/hero/roundup-exposure.webp`
+```css
+background-image: url('images/[directory]/[filename].[extension]');
+```
 
-### Trust Badges
-- BBB A+ Badge: Currently using text, can be replaced with `images/badges/bbb-aplus.svg`
-- AV Rated: Currently using text, can be replaced with `images/badges/av-rated.svg`
-- Super Lawyers: Currently using text, can be replaced with `images/badges/super-lawyers.svg`
+## Image Sources
 
-### Icons
-Many icons are currently implemented as inline SVGs. For better maintainability, consider replacing them with file references to the `/icons` directory. 
+When adding new images, please ensure you have the rights to use them. Options include:
+1. Licensed stock photos
+2. Public domain images
+3. Original photography
+
+## Placeholder Images
+
+During development, you might need to use placeholder images. Options include:
+- [Placeholder.com](https://placeholder.com/)
+- [Unsplash](https://unsplash.com/) 
