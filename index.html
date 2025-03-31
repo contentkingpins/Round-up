@@ -141,7 +141,7 @@
         
         /* Hero Section Styles */
         .hero {
-            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.9)), url('https://www.foodsafetynews.com/files/2021/01/roundup-weed-killer-in-grass.jpg') no-repeat center center;
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.9)), url('images/hero/roundup-spraying-hedges.jpg') no-repeat center center;
             background-size: cover;
             color: #FFFFFF;
             padding: 80px 0;
@@ -281,6 +281,28 @@
         .qualifying-criteria {
             padding: 50px 0;
             background-color: #F9F9F9;
+        }
+        
+        .criteria-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .criteria-text {
+            flex: 1;
+            max-width: 600px;
+            padding-right: 30px;
+        }
+        
+        .criteria-image {
+            flex: 0 0 340px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            margin-left: 20px;
         }
         
         .criteria-list {
@@ -425,6 +447,28 @@
             background-color: #F9F9F9;
         }
         
+        .verdicts-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .verdicts-text {
+            flex: 1;
+            max-width: 600px;
+            padding-right: 30px;
+        }
+        
+        .verdicts-image {
+            flex: 0 0 340px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            margin-left: 20px;
+        }
+        
         .verdict-timeline {
             background-color: #F5F5F5;
             border: 1px solid #DDDDDD;
@@ -474,10 +518,24 @@
             background-color: #FFFFFF;
         }
         
-        .process-steps {
+        .process-content {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            align-items: center;
+        }
+        
+        .process-image {
+            flex: 0 0 340px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            margin-left: 20px;
+        }
+        
+        .process-steps {
+            flex: 1;
             margin: 40px 0;
         }
         
@@ -739,6 +797,31 @@
             body {
                 padding-bottom: 60px;
             }
+            
+            .criteria-content, .verdicts-content, .process-content {
+                flex-direction: column;
+            }
+            
+            .criteria-text, .verdicts-text, .process-steps {
+                max-width: 100%;
+                padding-right: 0;
+                order: 2;
+            }
+            
+            .criteria-image, .verdicts-image, .process-image {
+                max-width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+                order: 1;
+                width: 100%;
+            }
+        }
+        
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
         }
     </style>
 </head>
@@ -815,19 +898,26 @@
     
     <section class="qualifying-criteria">
         <div class="container">
-            <h2>Do I Qualify for a Roundup Lawsuit?</h2>
-            <p>You may qualify if you meet the following criteria:</p>
-            
-            <ul class="criteria-list">
-                <li>You were a regular user of Roundup (or other glyphosate weed killers)</li>
-                <li>You have been diagnosed with non-Hodgkin's lymphoma, leukemia, or another form of cancer linked to Roundup exposure</li>
-            </ul>
-            
-            <p>Qualifying cancers include Non-Hodgkin's Lymphoma (B-cell or T-cell types), Chronic Lymphocytic Leukemia, Multiple Myeloma, and other lymphomas.</p>
-            
-            <p class="qualifying-note">Even if your loved one has already passed away from their cancer, you may still be able to file a claim on their behalf.</p>
-            
-            <p class="secondary-cta">Unsure if you qualify? <a href="tel:8001234567">Call us</a> or use the form above – our team will review your information for free.</p>
+            <div class="criteria-content">
+                <div class="criteria-text">
+                    <h2>Do I Qualify for a Roundup Lawsuit?</h2>
+                    <p>You may qualify if you meet the following criteria:</p>
+                    
+                    <ul class="criteria-list">
+                        <li>You were a regular user of Roundup (or other glyphosate weed killers)</li>
+                        <li>You have been diagnosed with non-Hodgkin's lymphoma, leukemia, or another form of cancer linked to Roundup exposure</li>
+                    </ul>
+                    
+                    <p>Qualifying cancers include Non-Hodgkin's Lymphoma (B-cell or T-cell types), Chronic Lymphocytic Leukemia, Multiple Myeloma, and other lymphomas.</p>
+                    
+                    <p class="qualifying-note">Even if your loved one has already passed away from their cancer, you may still be able to file a claim on their behalf.</p>
+                    
+                    <p class="secondary-cta">Unsure if you qualify? <a href="tel:8001234567">Call us</a> or use the form above – our team will review your information for free.</p>
+                </div>
+                <div class="criteria-image">
+                    <img src="images/hero/roundup-products-shelf.jpg" alt="Various Roundup products on store shelf" class="img-responsive">
+                </div>
+            </div>
         </div>
     </section>
     
@@ -903,26 +993,33 @@
     
     <section class="verdicts">
         <div class="container">
-            <h2 class="text-center">Roundup® Lawsuit Updates & Results</h2>
-            
-            <div class="verdict-timeline">
-                <div class="verdict-item">
-                    <div class="verdict-amount">$175 Million Verdict (2023)</div>
-                    <p>In a recent Philadelphia trial, Monsanto was ordered to pay $175 million to a Roundup cancer victim. The jury found Monsanto negligent in warning about the product's carcinogenic risks.</p>
+            <div class="verdicts-content">
+                <div class="verdicts-text">
+                    <h2>Roundup® Lawsuit Updates & Results</h2>
+                    
+                    <div class="verdict-timeline">
+                        <div class="verdict-item">
+                            <div class="verdict-amount">$175 Million Verdict (2023)</div>
+                            <p>In a recent Philadelphia trial, Monsanto was ordered to pay $175 million to a Roundup cancer victim. The jury found Monsanto negligent in warning about the product's carcinogenic risks.</p>
+                        </div>
+                        
+                        <div class="verdict-item">
+                            <div class="verdict-amount">$2 Billion Jury Award</div>
+                            <p>Juries in multiple cases have collectively awarded over $4 billion in verdicts against Bayer since 2018, including a landmark $2 billion verdict to a California couple.</p>
+                        </div>
+                        
+                        <div class="verdict-item">
+                            <div class="verdict-amount">$10 Billion Settlement</div>
+                            <p>In 2020, Bayer agreed to a settlement of more than $10 billion to resolve existing Roundup cancer claims. Funds are also set aside for future claims.</p>
+                        </div>
+                    </div>
+                    
+                    <p class="verdict-cta">These outcomes show what's possible. Your case matters too – contact us to pursue the justice you deserve.</p>
                 </div>
-                
-                <div class="verdict-item">
-                    <div class="verdict-amount">$2 Billion Jury Award</div>
-                    <p>Juries in multiple cases have collectively awarded over $4 billion in verdicts against Bayer since 2018, including a landmark $2 billion verdict to a California couple.</p>
-                </div>
-                
-                <div class="verdict-item">
-                    <div class="verdict-amount">$10 Billion Settlement</div>
-                    <p>In 2020, Bayer agreed to a settlement of more than $10 billion to resolve existing Roundup cancer claims. Funds are also set aside for future claims.</p>
+                <div class="verdicts-image">
+                    <img src="images/verdicts/agricultural-exposure.jpg" alt="Farmer spraying Roundup in agricultural field" class="img-responsive">
                 </div>
             </div>
-            
-            <p class="verdict-cta">These outcomes show what's possible. Your case matters too – contact us to pursue the justice you deserve.</p>
         </div>
     </section>
     
@@ -931,35 +1028,40 @@
             <h2 class="text-center">Our 3-Step Process</h2>
             <p class="text-center">We make the process as easy and stress-free as possible, so you can focus on your health while we handle the legal fight.</p>
             
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0056B3">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
-                        </svg>
-                    </div>
-                    <h3>Step 1: Free Consultation</h3>
-                    <p>You'll speak with our team for a free, no-obligation case evaluation. We'll ask a few questions about your Roundup exposure and diagnosis and answer any questions you have.</p>
+            <div class="process-content">
+                <div class="process-image">
+                    <img src="images/process/roundup-application.jpg" alt="Person applying Roundup herbicide" class="img-responsive">
                 </div>
-                
-                <div class="step">
-                    <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0056B3">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                        </svg>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0056B3">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                            </svg>
+                        </div>
+                        <h3>Step 1: Free Consultation</h3>
+                        <p>You'll speak with our team for a free, no-obligation case evaluation. We'll ask a few questions about your Roundup exposure and diagnosis and answer any questions you have.</p>
                     </div>
-                    <h3>Step 2: Case Review</h3>
-                    <p>Our attorneys will review your information thoroughly. If you qualify, we gather evidence (medical records, exposure history) and build your case at no cost to you.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0056B3">
-                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
-                        </svg>
+                    
+                    <div class="step">
+                        <div class="step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0056B3">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                            </svg>
+                        </div>
+                        <h3>Step 2: Case Review</h3>
+                        <p>Our attorneys will review your information thoroughly. If you qualify, we gather evidence (medical records, exposure history) and build your case at no cost to you.</p>
                     </div>
-                    <h3>Step 3: Fight for Compensation</h3>
-                    <p>We file your claim and fight for maximum compensation on your behalf. Our team handles all the legal work while you pay nothing unless we win. We keep you updated every step of the way.</p>
+                    
+                    <div class="step">
+                        <div class="step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0056B3">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <h3>Step 3: Fight for Compensation</h3>
+                        <p>We file your claim and fight for maximum compensation on your behalf. Our team handles all the legal work while you pay nothing unless we win. We keep you updated every step of the way.</p>
+                    </div>
                 </div>
             </div>
             

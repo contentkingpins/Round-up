@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roundup Landing Page - Image Uploader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            color: #0056B3;
+        }
+        
+        h2 {
+            margin: 30px 0 15px;
+            color: #0056B3;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .upload-container {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        select, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        button {
+            background-color: #0056B3;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #003d80;
+        }
+        
+        .preview-container {
+            margin-top: 20px;
+        }
+        
+        .preview-image {
+            max-width: 300px;
+            max-height: 200px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .image-library {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .image-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        .image-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 8px;
+        }
+        
+        .btn-copy {
+            background-color: #28a745;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+        
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Roundup Landing Page - Image Manager</h1>
+    <p>Use this tool to upload and manage images for your Roundup lawsuit landing page.</p>
+    
+    <div class="upload-container">
+        <h2>Upload New Image</h2>
+        <form id="upload-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image-category">Image Category:</label>
+                <select id="image-category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="hero">Hero Images</option>
+                    <option value="badges">Badges & Certifications</option>
+                    <option value="icons">Icons</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="image-file">Select Image:</label>
+                <input type="file" id="image-file" name="imageFile" accept=".jpg,.jpeg,.png,.gif,.svg,.webp" required>
+            </div>
+            
+            <div class="preview-container">
+                <p>Image Preview:</p>
+                <img id="preview-image" class="preview-image" alt="Image Preview">
+            </div>
+            
+            <button type="submit" id="upload-button">Upload Image</button>
+        </form>
+    </div>
+    
+    <h2>Image Library</h2>
+    <p>Here are your uploaded images. Click "Copy Path" to get the image path for use in your HTML.</p>
+    
+    <div class="image-library" id="image-library">
+        <!-- Example image items - these will be dynamically populated as you upload files -->
+        <div class="image-item">
+            <img src="images/badges/badge-placeholder.png" alt="Badge Placeholder">
+            <p>badge-placeholder.png</p>
+            <button class="btn-copy" data-path="images/badges/badge-placeholder.png">Copy Path</button>
+        </div>
+    </div>
+    
+    <h2>How to Use Images in Your Landing Page</h2>
+    <p>To use an uploaded image in your landing page, copy the image path and update your HTML or CSS.</p>
+    
+    <h3>For normal images:</h3>
+    <pre><code>&lt;img src="images/hero/your-image.jpg" alt="Description"&gt;</code></pre>
+    
+    <h3>For background images in CSS:</h3>
+    <pre><code>background-image: url('images/hero/your-image.jpg');</code></pre>
+    
+    <script>
+        // Preview the selected image before upload
+        document.getElementById('image-file').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                const previewImage = document.getElementById('preview-image');
+                
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Handle form submission (in a real implementation this would save the file)
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const category = document.getElementById('image-category').value;
+            const file = document.getElementById('image-file').files[0];
+            
+            if (!category || !file) {
+                alert('Please select a category and image file');
+                return;
+            }
+            
+            // In a real implementation, you would upload the file to the server here
+            // For this demo, we'll just simulate adding it to the image library
+            const fileName = file.name;
+            const imagePath = `images/${category}/${fileName}`;
+            
+            // Add to image library
+            const imageLib = document.getElementById('image-library');
+            const newImageItem = document.createElement('div');
+            newImageItem.className = 'image-item';
+            newImageItem.innerHTML = `
+                <img src="${URL.createObjectURL(file)}" alt="${fileName}">
+                <p>${fileName}</p>
+                <button class="btn-copy" data-path="${imagePath}">Copy Path</button>
+            `;
+            imageLib.appendChild(newImageItem);
+            
+            // Reset form
+            document.getElementById('upload-form').reset();
+            document.getElementById('preview-image').style.display = 'none';
+            
+            alert(`Image would be saved to: ${imagePath}\n\nNote: In this demo version, the image is not actually saved to the server.`);
+        });
+        
+        // Copy path functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-copy')) {
+                const path = e.target.getAttribute('data-path');
+                navigator.clipboard.writeText(path).then(function() {
+                    alert('Path copied to clipboard: ' + path);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
