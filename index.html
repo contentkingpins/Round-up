@@ -184,17 +184,11 @@
             text-align: center;
             margin-bottom: 20px;
             font-size: 22px;
+            font-weight: 700;
         }
         
         .form-group {
             margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            font-weight: 600;
         }
         
         .form-control {
@@ -204,17 +198,31 @@
             border: 1px solid #ECECEC;
             border-radius: 4px;
             font-size: 16px;
+            background-color: #f8f8f8;
         }
         
         .form-control:focus {
             border-color: #0056B3;
             outline: none;
+            background-color: #fff;
+        }
+        
+        .form-control::placeholder {
+            color: #666;
         }
         
         .form-btn {
             width: 100%;
             height: 50px;
             margin-top: 10px;
+            background-color: #FF7A00;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: none;
+        }
+        
+        .form-btn:hover {
+            background-color: #e66f00;
         }
         
         .form-footer {
@@ -618,6 +626,7 @@
             display: flex;
             justify-content: space-around;
             z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
         }
         
         .sticky-call, .sticky-form {
@@ -626,6 +635,8 @@
             flex: 1;
             text-align: center;
             font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
         }
         
         .sticky-form {
@@ -634,7 +645,7 @@
             margin-left: 10px;
         }
         
-        /* Responsive Styles */
+        /* Show sticky footer only on mobile */
         @media (max-width: 768px) {
             .hero {
                 padding: 50px 0;
@@ -711,7 +722,7 @@
             }
             
             body {
-                padding-bottom: 50px;
+                padding-bottom: 60px;
             }
         }
     </style>
@@ -744,29 +755,24 @@
                     <h3 class="form-title">Free Case Evaluation</h3>
                     <form id="qualify-form" action="https://formspree.io/f/meqbakqz" method="POST">
                         <div class="form-group">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first-name" class="form-control" required>
+                            <input type="text" id="first-name" name="first-name" class="form-control" placeholder="First Name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last-name" class="form-control" required>
+                            <input type="text" id="last-name" name="last-name" class="form-control" placeholder="Last Name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone Number" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="diagnosed">Have you or a loved one been diagnosed with non-Hodgkin's lymphoma after Roundup exposure?</label>
                             <select id="diagnosed" name="diagnosed" class="form-control" required>
-                                <option value="">Please select</option>
+                                <option value="" disabled selected>Have you been diagnosed with non-Hodgkin's lymphoma after Roundup exposure?</option>
                                 <option value="yes">Yes</option>
                                 <option value="no">No</option>
                             </select>
@@ -997,5 +1003,17 @@
         <a href="tel:8001234567" class="sticky-call">Call Now</a>
         <a href="#qualify-form" class="sticky-form">Free Case Review</a>
     </div>
+
+    <script>
+        // Simple scroll to form functionality
+        document.querySelectorAll('a[href="#qualify-form"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector('#qualify-form').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
