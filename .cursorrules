@@ -1,0 +1,64 @@
+// General guidelines for Cursor AI
+
+// Code Quality and Style
+Write clean, maintainable, and well-documented code
+Follow consistent naming conventions and code style
+Optimize for readability and maintainability
+Use appropriate design patterns when applicable
+Avoid code duplication; refactor into reusable components
+Keep functions and methods small and focused on a single task
+Use meaningful variable and function names
+
+// Project Structure
+Organize code in a logical, maintainable structure
+Follow standard project layout for the specific technology stack
+Separate concerns properly (data, business logic, presentation)
+Group related functionality together
+
+// Documentation
+Add clear comments for complex logic or algorithmic solutions
+Include documentation for public APIs and functions
+Document any non-obvious behavior or workarounds
+Add README files with clear instructions for setup and usage
+
+// Dependencies
+Use established, well-maintained libraries and frameworks
+Avoid unnecessary dependencies
+Specify exact versions of dependencies to ensure reproducibility
+Check for security vulnerabilities in third-party packages
+
+// Testing
+Write comprehensive tests for business logic
+Include both unit and integration tests where appropriate
+Test edge cases and error handling
+Ensure tests are maintainable and not brittle
+
+// Performance
+Optimize critical paths in the application
+Minimize unnecessary computations
+Consider resource usage (memory, network, etc.)
+Use appropriate caching strategies
+
+// Security
+Follow security best practices for the technology stack
+Validate and sanitize all user inputs
+Protect against common vulnerabilities (XSS, CSRF, SQL injection, etc.)
+Don't hardcode sensitive information
+
+// Error Handling
+Implement proper error handling and recovery
+Log errors with appropriate context for debugging
+Provide meaningful error messages to users
+Handle both expected and unexpected errors gracefully
+
+// User Experience
+Create intuitive and responsive user interfaces
+Ensure accessibility compliance
+Provide feedback for user actions
+Design for different screen sizes and devices
+
+// Version Control
+Write clear and descriptive commit messages
+Keep commits focused on a single logical change
+Use branching strategy appropriate for the project
+Add proper documentation for changes that affect the API or user experience 
