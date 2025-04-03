@@ -506,7 +506,7 @@
         }
         
         .testimonial::before {
-            content: """;
+            content: "\201C";
             font-size: 60px;
             position: absolute;
             top: 0;
@@ -1150,6 +1150,207 @@
             font-size: 18px;
             margin-bottom: 30px;
         }
+        
+        /* Image Info Blocks */
+        .image-info-blocks {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .info-blocks-container {
+            margin: 40px 0;
+        }
+        
+        .info-block {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-block-image {
+            flex: 0 0 40%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-block-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .info-block:hover .info-block-image img {
+            transform: scale(1.05);
+        }
+        
+        .info-block-badge {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background: #0056B3;
+            color: white;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 14px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-block-content {
+            flex: 0 0 60%;
+            padding: 30px;
+        }
+        
+        .info-block-content h3 {
+            margin-bottom: 15px;
+            color: #0056B3;
+        }
+        
+        .info-block.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        @media (max-width: 768px) {
+            .info-block, .info-block.reverse {
+                flex-direction: column;
+            }
+            
+            .info-block-image, .info-block-content {
+                flex: 0 0 100%;
+            }
+            
+            .info-block-image {
+                height: 200px;
+            }
+        }
+        
+        /* Image Comparison Slider */
+        :root {
+            --comparison-width: 50%;
+        }
+        
+        .image-comparison {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .comparison-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .comparison-text {
+            flex: 0 0 48%;
+            padding: 20px;
+        }
+        
+        .comparison-text h3 {
+            color: #0056B3;
+            margin-bottom: 20px;
+        }
+        
+        .comparison-text p {
+            margin-bottom: 20px;
+        }
+        
+        .image-slider {
+            flex: 0 0 48%;
+            position: relative;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .comparison-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .comparison-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .comparison-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: var(--comparison-width, 50%);
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent);
+            z-index: 1;
+            transition: width 0.1s ease-out;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            cursor: ew-resize;
+        }
+        
+        .slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider-handle::after {
+            content: '⟷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #0056B3;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-container {
+                flex-direction: column;
+            }
+            
+            .comparison-text, .image-slider {
+                flex: 0 0 100%;
+            }
+            
+            .image-slider {
+                height: 300px;
+                margin-top: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1361,6 +1562,48 @@
         </div>
     </section>
     
+    <section class="image-info-blocks">
+        <div class="container">
+            <h2 class="text-center">How Roundup Exposure Happens</h2>
+            <p class="text-center">People are exposed to Roundup and its active ingredient glyphosate through various activities.</p>
+            
+            <div class="info-blocks-container">
+                <div class="info-block">
+                    <div class="info-block-image">
+                        <img src="optimized_images/process/roundup-application.jpg" alt="Person spraying Roundup" class="img-responsive" loading="lazy">
+                        <div class="info-block-badge">Home Use</div>
+                    </div>
+                    <div class="info-block-content">
+                        <h3>Residential Applications</h3>
+                        <p>Homeowners frequently use Roundup for lawn and garden maintenance, applying it to driveways, sidewalks, flower beds, and vegetable gardens.</p>
+                    </div>
+                </div>
+                
+                <div class="info-block reverse">
+                    <div class="info-block-image">
+                        <img src="optimized_images/hero/roundup-products-shelf.jpg" alt="Roundup products" class="img-responsive" loading="lazy">
+                        <div class="info-block-badge">Products</div>
+                    </div>
+                    <div class="info-block-content">
+                        <h3>Various Formulations</h3>
+                        <p>Roundup comes in multiple forms including liquid concentrate, ready-to-use sprays, and extended control varieties, all containing potentially harmful chemicals.</p>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <div class="info-block-image">
+                        <img src="optimized_images/verdicts/agricultural-exposure.jpg" alt="Agricultural spraying" class="img-responsive" loading="lazy">
+                        <div class="info-block-badge">Agricultural</div>
+                    </div>
+                    <div class="info-block-content">
+                        <h3>Commercial Farming</h3>
+                        <p>Agricultural workers face the highest exposure risk, often applying Roundup to large crop areas over many years without proper protective equipment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="parallax-section">
         <div class="parallax-background" style="background-image: url('optimized_images/hero/roundup-products-shelf.jpg');"></div>
         <div class="parallax-content">
@@ -1407,6 +1650,30 @@
                             <p>Agricultural workers have been among the hardest hit by Roundup exposure, leading to multiple successful lawsuits.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="image-comparison">
+        <div class="container">
+            <h2 class="text-center">Understanding Roundup's Visual Impact</h2>
+            <p class="text-center">See how Roundup transforms landscapes — but at what hidden cost to human health?</p>
+            
+            <div class="comparison-container">
+                <div class="comparison-text">
+                    <h3>The Visible and Invisible Effects</h3>
+                    <p>While Roundup effectively eliminates unwanted vegetation, the product's active ingredient, glyphosate, has been linked to serious health concerns including cancer. What appears effective in the short term may have long-term consequences for those exposed.</p>
+                    <p>Recent studies and court verdicts have established connections between Roundup exposure and non-Hodgkin's lymphoma, revealing that this seemingly helpful product carries significant risks that weren't properly disclosed to consumers.</p>
+                    <a href="#qualify-form" class="btn btn-secondary">Evaluate Your Case</a>
+                </div>
+                
+                <div class="image-slider">
+                    <div class="comparison-image">
+                        <img src="optimized_images/process/roundup-application.jpg" alt="Before and after Roundup application" class="img-responsive">
+                        <div class="image-overlay-text">Drag slider to see before/after</div>
+                    </div>
+                    <div class="slider-handle"></div>
                 </div>
             </div>
         </div>
@@ -1582,6 +1849,65 @@
                     }
                 }
             });
+            
+            // Image comparison slider
+            const sliderHandle = document.querySelector('.slider-handle');
+            const comparisonImage = document.querySelector('.comparison-image');
+            
+            if (sliderHandle && comparisonImage) {
+                let isDragging = false;
+                
+                // Initialize the slider position
+                sliderHandle.style.left = '50%';
+                updateImageClip(50);
+                
+                // Add event listeners for mouse and touch events
+                sliderHandle.addEventListener('mousedown', startDrag);
+                sliderHandle.addEventListener('touchstart', startDrag);
+                
+                window.addEventListener('mousemove', drag);
+                window.addEventListener('touchmove', drag);
+                
+                window.addEventListener('mouseup', endDrag);
+                window.addEventListener('touchend', endDrag);
+                
+                function startDrag(e) {
+                    e.preventDefault();
+                    isDragging = true;
+                }
+                
+                function drag(e) {
+                    if (!isDragging) return;
+                    
+                    const slider = comparisonImage.getBoundingClientRect();
+                    let position;
+                    
+                    // Get position for mouse or touch event
+                    if (e.type === 'mousemove') {
+                        position = ((e.clientX - slider.left) / slider.width) * 100;
+                    } else if (e.type === 'touchmove') {
+                        position = ((e.touches[0].clientX - slider.left) / slider.width) * 100;
+                    }
+                    
+                    // Constrain position to image boundaries
+                    position = Math.max(0, Math.min(100, position));
+                    
+                    // Update handle position and image clipping
+                    sliderHandle.style.left = `${position}%`;
+                    updateImageClip(position);
+                }
+                
+                function endDrag() {
+                    isDragging = false;
+                }
+                
+                function updateImageClip(position) {
+                    // Update the gradient position for the before/after effect
+                    comparisonImage.style.setProperty('--clip-position', `${position}%`);
+                    // We can't directly select pseudo-elements with JavaScript, use a custom property instead
+                    document.documentElement.style.setProperty('--comparison-width', `${position}%`);
+                }
+            }
         });
     </script>
 </body>
