@@ -213,7 +213,7 @@
         }
         
         .hero-loaded::before {
-            opacity: 0.3;
+            opacity: 0.5;
             transition: opacity 0.3s ease-in;
         }
         
@@ -239,9 +239,32 @@
         }
         
         .hero-text {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 86, 179, 0.6);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             flex: 1;
             max-width: 600px;
-            padding-right: 30px;
+            margin-right: 30px;
+        }
+        
+        .hero-text h1, .hero-text h2, .hero-text p, .hero-text .btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .hero-text h1.animate-in, 
+        .hero-text h2.animate-in, 
+        .hero-text p.animate-in, 
+        .hero-text .btn.animate-in {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .hero-text h1, .hero-text h2 {
@@ -612,13 +635,22 @@
             align-items: center;
         }
         
-        .process-image {
+        .image-with-text {
             flex: 0 0 340px;
             background-color: #FFFFFF;
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             padding: 25px;
             margin-left: 20px;
+        }
+        
+        .image-with-text-img {
+            flex: 0 0 40%;
+        }
+        
+        .image-with-text-content {
+            flex: 0 0 60%;
+            padding: 20px;
         }
         
         .process-steps {
@@ -928,6 +960,196 @@
         .hero-image {
             display: block;
         }
+        
+        /* Image integration styles */
+        .image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-card img {
+            transition: transform 0.5s ease;
+            border-radius: 8px;
+        }
+        
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 86, 179, 0.9), rgba(0, 86, 179, 0.7) 60%, transparent);
+            padding: 20px;
+            color: white;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-card:hover .image-overlay {
+            transform: translateY(-10px);
+        }
+        
+        .image-overlay-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .image-overlay-text {
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .image-card:hover .image-overlay-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .featured-image {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .featured-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+        }
+        
+        .featured-caption h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .image-with-text {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .image-with-text-img {
+            flex: 0 0 40%;
+        }
+        
+        .image-with-text-content {
+            flex: 0 0 60%;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .image-with-text {
+                flex-direction: column;
+            }
+            
+            .image-with-text-img, 
+            .image-with-text-content {
+                flex: 0 0 100%;
+            }
+        }
+        
+        .image-card.hovering .image-overlay {
+            transform: translateY(-10px);
+        }
+        
+        .image-card.hovering .image-overlay-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .image-card.hovering img {
+            transform: scale(1.05);
+        }
+        
+        /* Parallax section */
+        .parallax-section {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .parallax-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            will-change: transform;
+            transform: translateY(0);
+            transition: transform 0.5s ease-out;
+        }
+        
+        .parallax-section:hover .parallax-background {
+            transform: translateY(-20px);
+        }
+        
+        .parallax-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            z-index: 2;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.4));
+        }
+        
+        .parallax-text {
+            max-width: 600px;
+            padding: 40px;
+            color: white;
+        }
+        
+        .parallax-text h2 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .parallax-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body>
@@ -1020,7 +1242,13 @@
                     <p class="secondary-cta">Unsure if you qualify? <a href="tel:8001234567">Call us</a> or use the form above – our team will review your information for free.</p>
                 </div>
                 <div class="criteria-image">
-                    <img src="optimized_images/hero/roundup-products-shelf.jpg" alt="Various Roundup products on store shelf" class="img-responsive" loading="lazy" width="100%" height="auto">
+                    <div class="image-card">
+                        <img src="optimized_images/hero/roundup-products-shelf.jpg" alt="Various Roundup products on store shelf" class="img-responsive" loading="lazy" width="100%" height="auto">
+                        <div class="image-overlay">
+                            <div class="image-overlay-title">Roundup Products Linked to Cancer</div>
+                            <div class="image-overlay-text">These common household weed killers have been associated with increased risk of non-Hodgkin's lymphoma and other cancers.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1096,6 +1324,56 @@
         </div>
     </section>
     
+    <section class="case-studies">
+        <div class="container">
+            <h2 class="text-center">Roundup Lawsuit Case Studies</h2>
+            <p class="text-center">These are real cases of individuals affected by Roundup exposure who received compensation.</p>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="optimized_images/verdicts/agricultural-exposure.jpg" alt="Farmer affected by Roundup" class="img-responsive" loading="lazy">
+                    <div class="image-overlay">
+                        <div class="image-overlay-title">Farmer Awarded $80M</div>
+                        <div class="image-overlay-text">After 26 years of using Roundup on his 56-acre farm, Edwin was diagnosed with non-Hodgkin's lymphoma in 2015. His case resulted in an $80 million verdict.</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="optimized_images/hero/roundup-products-shelf.jpg" alt="Home gardener affected by Roundup" class="img-responsive" loading="lazy">
+                    <div class="image-overlay">
+                        <div class="image-overlay-title">Gardener's $2B Victory</div>
+                        <div class="image-overlay-text">A California couple who used Roundup for residential landscaping for over 30 years were both diagnosed with the same type of non-Hodgkin's lymphoma.</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="optimized_images/process/roundup-application.jpg" alt="Groundskeeper using Roundup" class="img-responsive" loading="lazy">
+                    <div class="image-overlay">
+                        <div class="image-overlay-title">Groundskeeper's Justice</div>
+                        <div class="image-overlay-text">The first plaintiff to take Monsanto to trial was awarded $289 million after proving Roundup contributed to his terminal cancer diagnosis.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 30px;">
+                <a href="#qualify-form" class="btn">See If You Have A Case</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="parallax-section">
+        <div class="parallax-background" style="background-image: url('optimized_images/hero/roundup-products-shelf.jpg');"></div>
+        <div class="parallax-content">
+            <div class="container">
+                <div class="parallax-text">
+                    <h2>Monsanto Knew the Risks</h2>
+                    <p>Internal documents revealed during trials show that Monsanto was aware of the potential health risks associated with Roundup but failed to adequately warn consumers.</p>
+                    <a href="#qualify-form" class="btn">Take Action Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="verdicts">
         <div class="container">
             <div class="verdicts-content">
@@ -1122,7 +1400,13 @@
                     <p class="verdict-cta">These outcomes show what's possible. Your case matters too – contact us to pursue the justice you deserve.</p>
                 </div>
                 <div class="verdicts-image">
-                    <img src="optimized_images/verdicts/agricultural-exposure.jpg" alt="Farmer spraying Roundup in agricultural field" class="img-responsive" loading="lazy" width="100%" height="auto">
+                    <div class="featured-image">
+                        <img src="optimized_images/verdicts/agricultural-exposure.jpg" alt="Farmer spraying Roundup in agricultural field" class="img-responsive" loading="lazy" width="100%" height="auto">
+                        <div class="featured-caption">
+                            <h3>Landmark Verdicts Against Monsanto</h3>
+                            <p>Agricultural workers have been among the hardest hit by Roundup exposure, leading to multiple successful lawsuits.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1134,8 +1418,15 @@
             <p class="text-center">We make the process as easy and stress-free as possible, so you can focus on your health while we handle the legal fight.</p>
             
             <div class="process-content">
-                <div class="process-image">
-                    <img src="optimized_images/process/roundup-application.jpg" alt="Person applying Roundup herbicide" class="img-responsive" loading="lazy" width="100%" height="auto">
+                <div class="image-with-text">
+                    <div class="image-with-text-img">
+                        <img src="optimized_images/process/roundup-application.jpg" alt="Person applying Roundup herbicide" class="img-responsive" loading="lazy" width="100%" height="auto">
+                    </div>
+                    <div class="image-with-text-content">
+                        <h3>Fighting For Your Rights</h3>
+                        <p>For decades, people used Roundup without knowing the potential risks. If you've been diagnosed with cancer after exposure, we're here to help you get the compensation you deserve.</p>
+                        <a href="#qualify-form" class="btn btn-secondary">Start Your Claim Now</a>
+                    </div>
                 </div>
                 <div class="process-steps">
                     <div class="step">
@@ -1252,8 +1543,45 @@
                 img.src = 'optimized_images/hero/roundup-spraying-hedges.jpg';
                 img.onload = function() {
                     heroSection.classList.add('hero-loaded');
+                    
+                    // Animate hero text elements
+                    const heroTextElements = document.querySelectorAll('.hero-text h1, .hero-text h2, .hero-text p, .hero-text .btn');
+                    heroTextElements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('animate-in');
+                        }, 300 * (index + 1));
+                    });
                 };
             }
+            
+            // Add hover effects to image cards
+            const imageCards = document.querySelectorAll('.image-card');
+            imageCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.classList.add('hovering');
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.classList.remove('hovering');
+                });
+            });
+            
+            // Parallax scrolling effect
+            window.addEventListener('scroll', function() {
+                const parallaxBg = document.querySelector('.parallax-background');
+                if (parallaxBg) {
+                    let scrollPosition = window.pageYOffset;
+                    let parallaxSection = document.querySelector('.parallax-section');
+                    let parallaxTop = parallaxSection.offsetTop;
+                    let parallaxHeight = parallaxSection.offsetHeight;
+                    
+                    // Only apply effect when section is in view
+                    if (scrollPosition > parallaxTop - window.innerHeight && 
+                        scrollPosition < parallaxTop + parallaxHeight) {
+                        let yPos = -(scrollPosition - parallaxTop) / 5;
+                        parallaxBg.style.transform = `translateY(${yPos}px)`;
+                    }
+                }
+            });
         });
     </script>
 </body>
